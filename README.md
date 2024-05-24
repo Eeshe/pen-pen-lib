@@ -1,3 +1,3 @@
-# emperix-lib
+# PenPenLib
 
-Spigot library used when developing the rest of Emperix plugins
+Spigot/Paper plugin library used on all of my plugins.
