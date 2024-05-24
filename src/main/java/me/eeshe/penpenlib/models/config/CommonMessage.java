@@ -27,6 +27,7 @@ public class CommonMessage extends PenMessage {
     public static final CommonMessage INVALID_NUMERIC_INPUT_MUST_BE_HIGHER_THAN_ZERO = new CommonMessage("invalid-numeric-input-must-be-higher-than-zero", "{ERROR_COLOR}Value must be higher than 0.");
     public static final CommonMessage INVALID_TIME_FORMAT = new CommonMessage("invalid-time-format", "{ERROR_COLOR}Invalid time format. Use {ACCENT_COLOR}AdBhCmDs.");
     public static final CommonMessage ON_COOLDOWN = new CommonMessage("on-cooldown", "{ERROR_COLOR}Cooldown: {ACCENT_COLOR}%cooldown%");
+    public static final CommonMessage ITEM_NOT_FOUND = new CommonMessage("item-not-found", "{ERROR_COLOR}Item {ACCENT_COLOR}%item%{ERROR_COLOR} not found.");
     public static final CommonMessage HELP_COMMAND_INFO = new CommonMessage("help-command-info", "Displays this list.");
     public static final CommonMessage HELP_COMMAND_USAGE = new CommonMessage("help-command-usage", "/penpenlib help");
     public static final CommonMessage HELP_TEXT_HEADER = new CommonMessage("help-text-header", "&e{ACCENT_COLOR}Commands");

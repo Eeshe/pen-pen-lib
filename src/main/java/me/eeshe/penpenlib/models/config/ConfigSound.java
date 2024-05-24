@@ -12,4 +12,8 @@ public record ConfigSound(org.bukkit.Sound sound, boolean enabled, float volume,
     public void play(Location location) {
         location.getWorld().playSound(location, sound, volume, pitch);
     }
+
+    public void play(Player player, Location location) {
+        player.playSound(location, sound, volume, pitch);
+    }
 }

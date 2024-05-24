@@ -48,6 +48,8 @@ public abstract class PenTitle extends Configurable {
         FileConfiguration config = getConfig();
         for (PenTitle libTitle : getTitles()) {
             String path = libTitle.getPath();
+            if (config.contains(path)) continue;
+
             config.addDefault(path + ".title", libTitle.getDefaultTitle());
             config.addDefault(path + ".subtitle", libTitle.getDefaultSubtitle());
             config.addDefault(path + ".fade-in", libTitle.getDefaultFadeInTicks());

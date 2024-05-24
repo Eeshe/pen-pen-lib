@@ -2,6 +2,7 @@ package me.eeshe.penpenlib.commands;
 
 import me.eeshe.penpenlib.PenPenPlugin;
 import me.eeshe.penpenlib.models.config.CommonMessage;
+import me.eeshe.penpenlib.models.config.PenMessage;
 import me.eeshe.penpenlib.util.CommandUtil;
 import me.eeshe.penpenlib.util.LibMessager;
 import org.bukkit.command.CommandSender;
@@ -18,8 +19,8 @@ public class PenCommand {
 
     private String name;
     private String permission;
-    private CommonMessage infoMessage;
-    private CommonMessage usageMessage;
+    private PenMessage infoMessage;
+    private PenMessage usageMessage;
     private int argumentAmount;
     private boolean isConsoleCommand;
     private boolean isPlayerCommand;
@@ -40,7 +41,7 @@ public class PenCommand {
     }
 
     public PenCommand(PenPenPlugin plugin, PenCommand parentCommand, String name, String permission,
-                      CommonMessage infoMessage, CommonMessage usageMessage, int argumentAmount, boolean isConsoleCommand,
+                      PenMessage infoMessage, PenMessage usageMessage, int argumentAmount, boolean isConsoleCommand,
                       boolean isPlayerCommand, boolean isUniversalCommand, Map<String, PenCommand> subcommands,
                       Map<Integer, BiFunction<CommandSender, String[], List<String>>> completions) {
         this.plugin = plugin;
@@ -131,19 +132,19 @@ public class PenCommand {
         this.permission = permission;
     }
 
-    public CommonMessage getInfoMessage() {
+    public PenMessage getInfoMessage() {
         return infoMessage;
     }
 
-    public void setInfoMessage(CommonMessage infoMessage) {
+    public void setInfoMessage(PenMessage infoMessage) {
         this.infoMessage = infoMessage;
     }
 
-    public CommonMessage getUsageMessage() {
+    public PenMessage getUsageMessage() {
         return usageMessage;
     }
 
-    public void setUsageMessage(CommonMessage usageMessage) {
+    public void setUsageMessage(PenMessage usageMessage) {
         this.usageMessage = usageMessage;
     }
 

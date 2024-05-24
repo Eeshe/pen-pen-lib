@@ -45,6 +45,8 @@ public abstract class PenSound extends Configurable {
         FileConfiguration config = getConfig();
         for (PenSound libSound : getSounds()) {
             String path = libSound.getPath();
+            if (config.contains(path)) continue;
+
             config.addDefault(path + ".sound", libSound.getDefaultSound().name());
             config.addDefault(path + ".enable", libSound.getDefaultEnabled());
             config.addDefault(path + ".volume", libSound.getDefaultVolume());
@@ -68,6 +70,12 @@ public abstract class PenSound extends Configurable {
         if (location.getWorld() == null) return;
 
         configSound.play(location);
+    }
+
+    public void play(Player player, Location location) {
+        ConfigSound configSound = fetchConfigSound();
+
+        configSound.play(player, location);
     }
 
     private ConfigSound fetchConfigSound() {

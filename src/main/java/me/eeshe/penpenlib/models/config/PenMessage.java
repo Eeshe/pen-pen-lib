@@ -41,6 +41,9 @@ public abstract class PenMessage extends Configurable {
     public void writeDefaults() {
         FileConfiguration config = getConfig();
         for (PenMessage penMessage : getMessages()) {
+            String path = penMessage.getPath();
+            if (config.contains(path)) continue;
+
             config.addDefault(penMessage.getPath(), penMessage.getDefaultValue());
         }
         config.options().copyDefaults(true);

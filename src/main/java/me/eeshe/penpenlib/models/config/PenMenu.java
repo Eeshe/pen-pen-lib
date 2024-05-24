@@ -72,6 +72,8 @@ public abstract class PenMenu extends Configurable {
         ));
         for (PenMenu penMenu : getMenus()) {
             String path = penMenu.getPath();
+            if (config.contains(path)) continue;
+
             config.addDefault(path + ".size", penMenu.getDefaultSize());
             config.addDefault(path + ".title", penMenu.getDefaultTitle());
             config.addDefault(path + ".frame", penMenu.getDefaultFrame().name());
