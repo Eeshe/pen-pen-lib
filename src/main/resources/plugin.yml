@@ -3,7 +3,7 @@ name: PenPenLib
 version: ${project.version}
 author: Eeshe
 softdepend: [ PlaceholderAPI ]
-api-version: 1.13
+api-version: 1.19
 folia-supported: true
 
 commands:
