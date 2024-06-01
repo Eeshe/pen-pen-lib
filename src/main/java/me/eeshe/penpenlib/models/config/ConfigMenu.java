@@ -103,7 +103,7 @@ public class ConfigMenu {
             MenuUtil.addMenuItems(inventory, getMenuItems(), placeholders);
         }
         if (placeFiller) {
-            MenuUtil.placeFillerItems(inventory, getFiller(), getFillerSlots());
+            MenuUtil.placeFillerItems(this, inventory);
         }
         return inventory;
     }
@@ -154,7 +154,7 @@ public class ConfigMenu {
             MenuUtil.placeFrameItems(inventory, getFrame(), getFrameSlots());
         }
         if (placeFiller) {
-            MenuUtil.placeFillerItems(inventory, getFiller(), getFillerSlots());
+            MenuUtil.placeFillerItems(this, inventory);
         }
         MenuItem backItem = getBackItem();
         if (placeBackButton && backItem != null) {

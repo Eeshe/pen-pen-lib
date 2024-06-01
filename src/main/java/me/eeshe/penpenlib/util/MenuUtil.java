@@ -78,17 +78,17 @@ public class MenuUtil {
     }
 
     /**
-     * Places the filler items in the passed inventory using the passed list of slots. If the slot list contains -1,
-     * the filler items will be automatically placed in all empty slots.
+     * Places the filler items in the passed inventory using the passed slots. If the slot list contains -1, it will
+     * automatically place the filler items in the external borders of the inventory.
      *
-     * @param inventory      Inventory to place the filler items in.
-     * @param fillerMaterial Material of the filler item.
-     * @param slots          Slots to place the filler items in.
+     * @param configMenu    ConfigMenu to place the filler items in.
+     * @param inventory     Inventory to place the filler items in.
      */
-    public static void placeFillerItems(Inventory inventory, Material fillerMaterial, Collection<Integer> slots) {
+    public static void placeFillerItems(ConfigMenu configMenu, Inventory inventory) {
+        Material fillerMaterial = configMenu.getFiller();
         if (fillerMaterial.isAir()) return;
         // Convert to mutable
-        slots = new HashSet<>(slots);
+        Set<Integer> slots = new HashSet<>(configMenu.getFillerSlots());
         if (slots.contains(-1)) {
             for (int slot = 0; slot < inventory.getSize(); slot++) {
                 if (slots.contains(slot)) continue;
