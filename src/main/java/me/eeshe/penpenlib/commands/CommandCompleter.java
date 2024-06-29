@@ -21,20 +21,16 @@ public class CommandCompleter implements TabCompleter {
     }
 
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
-        PenCommand penCommand = plugin.getLibCommands().get(cmd.getName());
-        if (penCommand == null) return new ArrayList<>();
-        if (!penCommand.checkPermission(sender)) return new ArrayList<>();
+        PenCommand libCommand = plugin.getLibCommands().get(cmd.getName());
+        if (libCommand == null) return new ArrayList<>();
+        if (!libCommand.checkPermission(sender)) return new ArrayList<>();
 
-        String[] completionArgs;
-        if (args.length > 1) {
-            penCommand = penCommand.getSubcommand(args[0]);
-            if (penCommand == null) return new ArrayList<>();
-
-            completionArgs = Arrays.copyOfRange(args, 2, args.length);
-        } else {
-            completionArgs = Arrays.copyOfRange(args, 1, args.length);
+        if (!libCommand.getSubcommands().isEmpty() && args.length > 1) {
+            libCommand = libCommand.getSubcommand(args[0]);
+            args = Arrays.copyOfRange(args, 1, args.length);
         }
-        List<String> completions = penCommand.getCommandCompletions(sender, completionArgs);
+        if (libCommand == null) return new ArrayList<>();
+        List<String> completions = libCommand.getCommandCompletions(sender, args);
         if (completions == null) return null;
 
         return getCompletion(completions, args);

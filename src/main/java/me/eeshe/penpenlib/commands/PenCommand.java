@@ -95,9 +95,17 @@ public class PenCommand {
 
     public List<String> getCommandCompletions(CommandSender sender, String[] args) {
         if (!checkPermission(sender)) return new ArrayList<>();
-        if (completions.isEmpty()) return new ArrayList<>(getSubcommands().keySet());
+        if (completions.isEmpty()) {
+            List<String> completions = new ArrayList<>();
+            for (PenCommand penCommand : getSubcommands().values()) {
+                if (!penCommand.checkPermission(sender)) continue;
 
-        return completions.getOrDefault(args.length, (sender1, strings) -> new ArrayList<>()).apply(sender, args);
+                completions.add(penCommand.getName());
+            }
+            return completions;
+        }
+
+        return completions.getOrDefault(args.length - 1, (sender1, strings) -> new ArrayList<>()).apply(sender, args);
     }
 
     public boolean checkPermission(CommandSender sender) {
