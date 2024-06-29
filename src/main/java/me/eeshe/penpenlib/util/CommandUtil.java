@@ -30,7 +30,7 @@ public class CommandUtil {
      * @param command Command that will be run.
      */
     public static void executeCommand(OfflinePlayer player, String command) {
-        Scheduler.run(PenPenLib.getInstance(), () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), PlaceholderUtil.formatPlaceholders(player, command)));
+        Scheduler.run(PenPenLib.getInstance(), () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), PlaceholderUtil.formatPapiPlaceholders(player, command)));
     }
 
     /**

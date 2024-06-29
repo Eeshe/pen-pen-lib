@@ -1,6 +1,7 @@
 package me.eeshe.penpenlib.models.config;
 
 import me.eeshe.penpenlib.PenPenLib;
+import me.eeshe.penpenlib.util.PlaceholderUtil;
 import me.eeshe.penpenlib.util.StringUtil;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemFlag;
@@ -47,13 +48,12 @@ public class MenuItem {
         if (item == null) return null;
 
         ItemMeta meta = item.getItemMeta();
-        String displayName = meta.getDisplayName() != null ? meta.getDisplayName() : "";
-        List<String> lore = meta.getLore() != null ? meta.getLore() : new ArrayList<>();
-        for (Map.Entry<String, String> entry : placeholders.entrySet()) {
-            String placeholder = entry.getKey();
-            displayName = displayName.replace(placeholder, entry.getValue());
-            lore.replaceAll(loreLine -> loreLine.replace(placeholder, StringUtil.formatColor(entry.getValue())));
-        }
+        String displayName = PlaceholderUtil.formatPlaceholders(meta.getDisplayName() != null ? meta.getDisplayName() : "", placeholders);
+        List<String> lore = PlaceholderUtil.formatPlaceholders(meta.getLore() != null ? meta.getLore() : new ArrayList<>(), placeholders);
+        meta.setDisplayName(displayName);
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+
         return item;
     }
 
