@@ -286,6 +286,10 @@ public abstract class PenMenu extends Configurable {
         return getConfig().getStringList(path + "." + additionalPath);
     }
 
+    public List<Integer> getAdditionalConfigIntList(String additionalPath) {
+        return getConfig().getIntegerList(path + "." + additionalPath);
+    }
+
     public int getAdditionalConfigInt(String additionalPath) {
         return getConfig().getInt(path + "." + additionalPath);
     }

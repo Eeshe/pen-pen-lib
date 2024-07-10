@@ -46,8 +46,9 @@ public class MenuItem {
     public ItemStack generateItemStack(Map<String, String> placeholders) {
         ItemStack item = generateItemStack();
         if (item == null) return null;
-
         ItemMeta meta = item.getItemMeta();
+        if (meta == null) return item;
+
         String displayName = PlaceholderUtil.formatPlaceholders(meta.getDisplayName() != null ? meta.getDisplayName() : "", placeholders);
         List<String> lore = PlaceholderUtil.formatPlaceholders(meta.getLore() != null ? meta.getLore() : new ArrayList<>(), placeholders);
         meta.setDisplayName(displayName);
@@ -108,6 +109,7 @@ public class MenuItem {
         if (item == null) return null;
         ItemStack item = this.item.clone();
         ItemMeta meta = item.getItemMeta();
+        if (meta == null) return item;
 
         String displayName = meta.getDisplayName();
         List<String> lore = meta.getLore();

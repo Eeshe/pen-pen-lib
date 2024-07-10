@@ -34,6 +34,7 @@ public class ItemUtil {
     public static ItemStack generateItemStack(Material material, String name, List<String> loreLines) {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
+        if (meta == null) return item;
         if (name != null) {
             meta.setDisplayName(StringUtil.formatColor(name));
         }
