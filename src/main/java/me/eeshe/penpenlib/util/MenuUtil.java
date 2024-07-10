@@ -199,35 +199,6 @@ public class MenuUtil {
     }
 
     /**
-     * Calculates the initial index of a list of items that will be added to a framed inventory based on the passed page.
-     *
-     * @param page           Current page of the inventory where the items will be added.
-     * @param menuItemAmount Amount of menu items that are added to the inventory.
-     * @param inventorySize  Size of the inventory.
-     * @param hasFrame       Whether the menu has a frame.
-     * @return Index where the list iteration should start.
-     */
-    public static int getInitialIndex(int page, int menuItemAmount, int inventorySize, boolean hasFrame) {
-        int rowSlots = hasFrame ? 7 : 9;
-        int rows = inventorySize / 9 - (hasFrame ? 2 : 0);
-        return page == 1 ? 0 : ((page - 1) * rows * rowSlots) - menuItemAmount + 1;
-    }
-
-    /**
-     * Calculates the initial index of a list of items that will be added to a framed inventory based on the passed page.
-     *
-     * @param page          Current page of the inventory where the items will be added.
-     * @param inventorySize Size of the inventory.
-     * @param configMenu    ConfigMenu that is being created.
-     * @return Index where the list iteration should start.
-     */
-    public static int getInitialIndex(int page, int inventorySize, ConfigMenu configMenu) {
-        int rowSlots = configMenu.hasFrame() ? 7 : 9;
-        int rows = inventorySize / 9 - (configMenu.hasFrame() ? 2 : 0);
-        return page == 1 ? 0 : ((page - 1) * rows * rowSlots) - configMenu.getMenuItems().size() + 1;
-    }
-
-    /**
      * Opens the passed inventory to the passed player synchronously.
      *
      * @param player    Player the inventory will be opened to.
