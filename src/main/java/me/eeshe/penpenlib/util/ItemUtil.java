@@ -4,10 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ItemUtil {
 
@@ -32,6 +29,19 @@ public class ItemUtil {
      * @return ItemStack with the passed information.
      */
     public static ItemStack generateItemStack(Material material, String name, List<String> loreLines) {
+        return generateItemStack(material, name, loreLines, null);
+    }
+
+    /**
+     * Generates the passed ItemStack with the passed information.
+     *
+     * @param material Material of the ItemStack.
+     * @param name     Name of the ItemStack.
+     * @param loreLines Lore of the ItemStack.
+     * @param placeholders Placeholders of the ItemStack.
+     * @return ItemStack with the passed information.
+     */
+    public static ItemStack generateItemStack(Material material, String name, List<String> loreLines, Map<String, String> placeholders) {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
         if (meta == null) return item;
@@ -47,6 +57,7 @@ public class ItemUtil {
         }
         item.setItemMeta(meta);
 
+        formatPlaceholders(item, placeholders);
         return item;
     }
 

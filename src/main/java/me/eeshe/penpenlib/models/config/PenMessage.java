@@ -131,6 +131,7 @@ public abstract class PenMessage extends Configurable {
      * @param placeholders Placeholders that will be replaced.
      */
     public void send(CommandSender sender, boolean actionBar, PenSound libSound, Map<String, String> placeholders) {
+        if (sender == null) return;
         String message = StringUtil.formatColor(getFormattedValue(placeholders));
         if (!actionBar) {
             sender.sendMessage(message);

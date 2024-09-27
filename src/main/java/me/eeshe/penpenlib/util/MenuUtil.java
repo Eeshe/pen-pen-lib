@@ -12,6 +12,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Utility class that eases the work with framed GUIs.
@@ -206,6 +207,23 @@ public class MenuUtil {
      */
     public static void openSync(Player player, Inventory inventory) {
         Scheduler.run(PenPenLib.getInstance(), player.getLocation(), () -> player.openInventory(inventory));
+    }
+
+    /**
+     * Opens the passed inventory after handling the completable future.
+     *
+     * @param player            Player to open the inventory to.
+     * @param completableFuture CompletableFuture to handle.
+     */
+    public static void openCompletableFutureInventory(Player player, CompletableFuture<Inventory> completableFuture) {
+        if (completableFuture == null) return;
+        completableFuture.whenComplete((inventory, throwable) -> {
+            if (throwable != null) {
+                throwable.printStackTrace();
+                return;
+            }
+            openSync(player, inventory);
+        });
     }
 
     /**
