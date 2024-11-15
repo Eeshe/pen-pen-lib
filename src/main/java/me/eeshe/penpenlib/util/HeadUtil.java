@@ -28,4 +28,21 @@ public class HeadUtil {
 
         return item;
     }
+
+    /**
+     * Adds the passed player skin to the passed item.
+     *
+     * @param item Item to add the skin to.
+     * @param playerName Player name of the skin.
+     * @return Item with the passed skin.
+     */
+    public static ItemStack addHeadPlayerSkin(ItemStack item, String playerName) {
+        if (item == null) return null;
+        if (!(item.getItemMeta() instanceof SkullMeta skullMeta)) return item;
+
+        skullMeta.setOwningPlayer(Bukkit.getOfflinePlayer(playerName));
+        item.setItemMeta(skullMeta);
+
+        return item;
+    }
 }
