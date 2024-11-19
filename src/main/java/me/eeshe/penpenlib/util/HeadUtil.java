@@ -38,6 +38,7 @@ public class HeadUtil {
      */
     public static ItemStack addHeadPlayerSkin(ItemStack item, String playerName) {
         if (item == null) return null;
+        if (playerName == null) return item;
         if (!(item.getItemMeta() instanceof SkullMeta skullMeta)) return item;
 
         skullMeta.setOwningPlayer(Bukkit.getOfflinePlayer(playerName));
